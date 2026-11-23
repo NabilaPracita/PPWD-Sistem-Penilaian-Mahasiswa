@@ -185,6 +185,7 @@
              FORM INPUT DAN GRAFIK
         ========================== -->
         <section class="content-section">
+            <small id="errorNim" class="error-message"></small>
 
 
             <!-- =========================
@@ -199,14 +200,14 @@
                     <p>
                         Isi data mahasiswa, nilai akhir dan grade dihitung otomatis.
                     </p>
-
+                    <small id="errorNim" class="error-message"></small>
                 </div>
 
 
 
                 <!-- FORM INPUT -->
                 <form id="formNilai">
-
+                    <small id="errorNim" class="error-message"></small>
 
                     <!-- NIM -->
                     <div class="form-group">
@@ -215,13 +216,7 @@
                             NIM
                         </label>
 
-                        <input
-                            type="text"
-                            id="nim"
-                            name="nim"
-                            placeholder="24101000"
-                            required
-                        >
+                        <input type="text" id="nim" name="nim" placeholder="24101000" required>
 
                         <!-- Validasi NIM -->
                         <small id="errorNim" class="error-message">
@@ -245,13 +240,7 @@
                                 Nama
                             </label>
 
-                            <input
-                                type="text"
-                                id="nama"
-                                name="nama"
-                                placeholder="Masukkan nama mahasiswa"
-                                required
-                            >
+                            <input type="text" id="nama" name="nama" placeholder="Masukkan nama mahasiswa" required>
 
                             <!-- Validasi Nama -->
                             <small id="errorNama" class="error-message">
@@ -271,13 +260,7 @@
                                 Kelas
                             </label>
 
-                            <input
-                                type="text"
-                                id="kelas"
-                                name="kelas"
-                                placeholder="K-1A"
-                                required
-                            >
+                            <input type="text" id="kelas" name="kelas" placeholder="K-1A" required>
 
                         </div>
 
@@ -296,15 +279,7 @@
                                 Tugas (30%)
                             </label>
 
-                            <input
-                                type="number"
-                                id="tugas"
-                                name="tugas"
-                                placeholder="0"
-                                min="0"
-                                max="100"
-                                required
-                            >
+                            <input type="number" id="tugas" name="tugas" placeholder="0" min="0" max="100" required>
 
                             <!-- Validasi Tugas -->
                             <small id="errorTugas" class="error-message">
@@ -324,15 +299,7 @@
                                 UTS (30%)
                             </label>
 
-                            <input
-                                type="number"
-                                id="uts"
-                                name="uts"
-                                placeholder="0"
-                                min="0"
-                                max="100"
-                                required
-                            >
+                            <input type="number" id="uts" name="uts" placeholder="0" min="0" max="100" required>
 
                             <!-- Validasi UTS -->
                             <small id="errorUts" class="error-message">
@@ -354,15 +321,7 @@
                             UAS (40%)
                         </label>
 
-                        <input
-                            type="number"
-                            id="uas"
-                            name="uas"
-                            placeholder="0"
-                            min="0"
-                            max="100"
-                            required
-                        >
+                        <input type="number" id="uas" name="uas" placeholder="0" min="0" max="100" required>
 
                         <!-- Validasi UAS -->
                         <small id="errorUas" class="error-message">
@@ -378,10 +337,7 @@
                     <!-- Tombol Simpan -->
                     <div class="form-button">
 
-                        <button
-                            type="submit"
-                            id="btnSimpan"
-                        >
+                        <button type="submit" id="btnSimpan">
                             Simpan nilai
                         </button>
 
@@ -676,20 +632,14 @@
 
 
                 <!-- Tombol Batal -->
-                <button
-                    type="button"
-                    id="btnBatalHapus"
-                >
+                <button type="button" id="btnBatalHapus">
                     Batal
                 </button>
 
 
 
                 <!-- Tombol Konfirmasi -->
-                <button
-                    type="button"
-                    id="btnKonfirmasiHapus"
-                >
+                <button type="button" id="btnKonfirmasiHapus">
                     Ya, hapus
                 </button>
 
@@ -712,7 +662,13 @@
 
     </footer>
 
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 
 </html>
