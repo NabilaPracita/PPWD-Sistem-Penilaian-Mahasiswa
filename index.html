@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NilaiKu - Sistem Penilaian Mahasiswa</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+    <header>
+        <nav class="navbar">
+
+            <!-- Logo -->
+            <div class="logo">
+                <h1>NilaiKu</h1>
+                <p>Sistem Penilaian Mahasiswa</p>
+            </div>
+
+            <!-- Menu Navigasi -->
+            <ul class="nav-menu">
+
+                <li>
+                    <a href="#beranda" class="active">Beranda</a>
+                </li>
+
+                <li>
+                    <a href="#statistik">Statistik</a>
+                </li>
+
+                <li>
+                    <a href="#dataNilai">Data Nilai</a>
+                </li>
+
+            </ul>
+
+        </nav>
+    </header>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+    <main id="beranda">
+
+
+        <!-- =========================
+             STATISTIK UTAMA
+        ========================== -->
+        <section id="statistik">
+
+            <div class="statistik-container">
+
+
+                <!-- Rata-rata Kelas -->
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        <span>👤</span>
+                    </div>
+
+                    <div class="stat-info">
+
+                        <p>Rata-rata kelas</p>
+
+                        <h2 id="statRata">0</h2>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Nilai Tertinggi -->
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        <span>↑</span>
+                    </div>
+
+                    <div class="stat-info">
+
+                        <p>Nilai tertinggi</p>
+
+                        <h2 id="statMax">0</h2>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Nilai Terendah -->
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        <span>↓</span>
+                    </div>
+
+                    <div class="stat-info">
+
+                        <p>Nilai terendah</p>
+
+                        <h2 id="statMin">0</h2>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================
+                 JUMLAH MAHASISWA PER GRADE
+            ========================== -->
+            <div class="grade-summary">
+
+                <p>Jumlah per grade</p>
+
+
+                <!-- Grade A -->
+                <div class="grade-item grade-a">
+
+                    <span class="grade-label">A</span>
+
+                    <span id="statGradeA">0</span>
+
+                </div>
+
+
+                <!-- Grade B -->
+                <div class="grade-item grade-b">
+
+                    <span class="grade-label">B</span>
+
+                    <span id="statGradeB">0</span>
+
+                </div>
+
+
+                <!-- Grade C -->
+                <div class="grade-item grade-c">
+
+                    <span class="grade-label">C</span>
+
+                    <span id="statGradeC">0</span>
+
+                </div>
+
+
+                <!-- Grade D -->
+                <div class="grade-item grade-d">
+
+                    <span class="grade-label">D</span>
+
+                    <span id="statGradeD">0</span>
+
+                </div>
+
+
+                <!-- Grade E -->
+                <div class="grade-item grade-e">
+
+                    <span class="grade-label">E</span>
+
+                    <span id="statGradeE">0</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             FORM INPUT DAN GRAFIK
+        ========================== -->
+        <section class="content-section">
+
+
+            <!-- =========================
+                 FORM TAMBAH NILAI
+            ========================== -->
+            <section id="inputNilai" class="form-section">
+
+                <div class="section-header">
+
+                    <h2>Tambah nilai</h2>
+
+                    <p>
+                        Isi data mahasiswa, nilai akhir dan grade dihitung otomatis.
+                    </p>
+
+                </div>
+
+
+
+                <!-- FORM INPUT -->
+                <form id="formNilai">
+
+
+                    <!-- NIM -->
+                    <div class="form-group">
+
+                        <label for="nim">
+                            NIM
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nim"
+                            name="nim"
+                            placeholder="24101000"
+                            required
+                        >
+
+                        <!-- Validasi NIM -->
+                        <small id="errorNim" class="error-message">
+
+                            NIM harus 10 digit angka.
+
+                        </small>
+
+                    </div>
+
+
+
+                    <!-- Nama dan Kelas -->
+                    <div class="form-row">
+
+
+                        <!-- Nama -->
+                        <div class="form-group">
+
+                            <label for="nama">
+                                Nama
+                            </label>
+
+                            <input
+                                type="text"
+                                id="nama"
+                                name="nama"
+                                placeholder="Masukkan nama mahasiswa"
+                                required
+                            >
+
+                            <!-- Validasi Nama -->
+                            <small id="errorNama" class="error-message">
+
+                                Nama wajib diisi.
+
+                            </small>
+
+                        </div>
+
+
+
+                        <!-- Kelas -->
+                        <div class="form-group">
+
+                            <label for="kelas">
+                                Kelas
+                            </label>
+
+                            <input
+                                type="text"
+                                id="kelas"
+                                name="kelas"
+                                placeholder="K-1A"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Nilai Tugas dan UTS -->
+                    <div class="form-row">
+
+
+                        <!-- Nilai Tugas -->
+                        <div class="form-group">
+
+                            <label for="tugas">
+                                Tugas (30%)
+                            </label>
+
+                            <input
+                                type="number"
+                                id="tugas"
+                                name="tugas"
+                                placeholder="0"
+                                min="0"
+                                max="100"
+                                required
+                            >
+
+                            <!-- Validasi Tugas -->
+                            <small id="errorTugas" class="error-message">
+
+                                Nilai harus angka 0 sampai 100.
+
+                            </small>
+
+                        </div>
+
+
+
+                        <!-- Nilai UTS -->
+                        <div class="form-group">
+
+                            <label for="uts">
+                                UTS (30%)
+                            </label>
+
+                            <input
+                                type="number"
+                                id="uts"
+                                name="uts"
+                                placeholder="0"
+                                min="0"
+                                max="100"
+                                required
+                            >
+
+                            <!-- Validasi UTS -->
+                            <small id="errorUts" class="error-message">
+
+                                Nilai harus angka 0 sampai 100.
+
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Nilai UAS -->
+                    <div class="form-group">
+
+                        <label for="uas">
+                            UAS (40%)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="uas"
+                            name="uas"
+                            placeholder="0"
+                            min="0"
+                            max="100"
+                            required
+                        >
+
+                        <!-- Validasi UAS -->
+                        <small id="errorUas" class="error-message">
+
+                            Nilai harus angka 0 sampai 100.
+
+                        </small>
+
+                    </div>
+
+
+
+                    <!-- Tombol Simpan -->
+                    <div class="form-button">
+
+                        <button
+                            type="submit"
+                            id="btnSimpan"
+                        >
+                            Simpan nilai
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+
+
+            <!-- =========================
+                 GRAFIK DISTRIBUSI GRADE
+            ========================== -->
+            <section id="grafikGrade" class="chart-section">
+
+                <div class="section-header">
+
+                    <h2>Distribusi grade</h2>
+
+                    <p>
+                        Diagram batang (RebarGrade), ikut berubah saat data berubah.
+                    </p>
+
+                </div>
+
+
+
+                <!-- Area Grafik -->
+                <div class="chart-container">
+
+                    <canvas id="chartGrade">
+
+                        Grafik distribusi grade mahasiswa.
+
+                    </canvas>
+
+                </div>
+
+            </section>
+
+        </section>
+
+
+
+        <!-- =========================
+             DATA NILAI MAHASISWA
+        ========================== -->
+        <section id="dataNilai" class="data-section">
+
+
+            <!-- Header Data -->
+            <div class="data-header">
+
+                <h2>Daftar nilai mahasiswa</h2>
+
+
+                <!-- Filter dan Sorting -->
+                <div class="filter-container">
+
+
+                    <!-- Filter Kelas -->
+                    <div class="filter-group">
+
+                        <label for="filterKelas">
+                            Kelas
+                        </label>
+
+                        <select id="filterKelas">
+
+                            <option value="">
+                                Semua kelas
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- Filter Grade -->
+                    <div class="filter-group">
+
+                        <label for="filterGrade">
+                            Grade
+                        </label>
+
+                        <select id="filterGrade">
+
+                            <option value="">
+                                Semua grade
+                            </option>
+
+                            <option value="A">
+                                Grade A
+                            </option>
+
+                            <option value="B">
+                                Grade B
+                            </option>
+
+                            <option value="C">
+                                Grade C
+                            </option>
+
+                            <option value="D">
+                                Grade D
+                            </option>
+
+                            <option value="E">
+                                Grade E
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- Sorting -->
+                    <div class="filter-group">
+
+                        <label for="sortBy">
+                            Urutkan
+                        </label>
+
+                        <select id="sortBy">
+
+                            <option value="nilai_akhir">
+                                Nilai akhir
+                            </option>
+
+                            <option value="nama">
+                                Nama
+                            </option>
+
+                            <option value="nim">
+                                NIM
+                            </option>
+
+                            <option value="grade">
+                                Grade
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- Arah Sorting -->
+                    <div class="filter-group">
+
+                        <label for="sortArah">
+                            Arah
+                        </label>
+
+                        <select id="sortArah">
+
+                            <option value="desc">
+                                Terbesar dulu
+                            </option>
+
+                            <option value="asc">
+                                Terkecil dulu
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================
+                 TABEL DATA NILAI
+            ========================== -->
+            <div class="table-container">
+
+                <table id="tabelNilai">
+
+
+                    <!-- Header Tabel -->
+                    <thead>
+
+                        <tr>
+
+                            <th>NIM</th>
+
+                            <th>Nama</th>
+
+                            <th>Kelas</th>
+
+                            <th>Tugas</th>
+
+                            <th>UTS</th>
+
+                            <th>UAS</th>
+
+                            <th>Nilai akhir</th>
+
+                            <th>Grade</th>
+
+                            <th>Aksi</th>
+
+                        </tr>
+
+                    </thead>
+
+
+
+                    <!-- Isi Tabel -->
+                    <tbody id="bodyTabel">
+
+                        <!-- Data mahasiswa ditampilkan melalui JavaScript -->
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================
+         NOTIFIKASI BERHASIL
+    ========================== -->
+    <div id="alertBox" class="alert-container">
+
+        <div class="alert-success">
+
+            <span class="alert-icon">✓</span>
+
+            <p>
+                Data nilai berhasil disimpan!
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         MODAL KONFIRMASI HAPUS
+    ========================== -->
+    <div id="modalHapus" class="modal-container">
+
+
+        <!-- Isi Modal -->
+        <div class="modal-content">
+
+
+            <!-- Ikon Hapus -->
+            <div class="modal-icon">
+
+                <span>🗑</span>
+
+            </div>
+
+
+
+            <!-- Judul Modal -->
+            <h2>Hapus data ini?</h2>
+
+
+
+            <!-- Pesan Konfirmasi -->
+            <p>
+
+                Data nilai
+
+                <strong id="namaMahasiswaHapus">
+                    mahasiswa
+                </strong>
+
+                akan dihapus dan tidak bisa dikembalikan.
+
+            </p>
+
+
+
+            <!-- Tombol Modal -->
+            <div class="modal-button">
+
+
+                <!-- Tombol Batal -->
+                <button
+                    type="button"
+                    id="btnBatalHapus"
+                >
+                    Batal
+                </button>
+
+
+
+                <!-- Tombol Konfirmasi -->
+                <button
+                    type="button"
+                    id="btnKonfirmasiHapus"
+                >
+                    Ya, hapus
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+    <footer>
+
+        <p>
+            NilaiKu - Sistem Penilaian Mahasiswa
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
